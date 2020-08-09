@@ -58,9 +58,10 @@ class ProjectsController extends Controller
      * @param  \App\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function show(Projects $projects)
+    public function show($projects)
     {
-        //
+        $proyek = DB::table('projects') -> where('id', $projects )->first();
+        return view('proyek.detail', compact('proyek'));
     }
 
     /**
