@@ -25,7 +25,7 @@
    
                 <a class="btn btn-info" href="{{ route('proyek.show',$prt->id) }}">Show</a>
 
-                <a class="btn btn-primary" href="">Edit</a>
+                <a class="btn btn-primary" href="{{ route('proyek.edit',$prt->id) }}">Edit</a>
 
                 @csrf
                 @method('DELETE')

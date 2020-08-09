@@ -70,9 +70,10 @@ class ProjectsController extends Controller
      * @param  \App\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function edit(Projects $projects)
+    public function edit($projects)
     {
-        //
+        $proyek = DB::table('projects') -> where('id', $projects )->first();
+        return view('proyek.edit', compact('proyek'));
     }
 
     /**
@@ -82,9 +83,17 @@ class ProjectsController extends Controller
      * @param  \App\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Projects $projects)
+    public function update($projects, Request $request)
     {
-        //
+        $query = DB::table('projects')
+        -> where('id', $projects )
+        -> update([
+            'nama' => $request['nama'],
+            'deskripsi' => $request['desk'],
+            'tanggal_mulai' => $request['mulai'],
+            'tanggal_deadline' => $request['deadline'],
+        ]);
+        return redirect()->route('proyek.index');
     }
 
     /**
