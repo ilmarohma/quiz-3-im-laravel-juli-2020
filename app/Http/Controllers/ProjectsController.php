@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Projects;
 use Illuminate\Http\Request;
+use DB;
 
 class ProjectsController extends Controller
 {
+    public function __invoke(Request $request)
+    {
+        return "Welcome to our homepage";
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        $proyeks = Projects::all();
+        return view('proyek.index', compact('proyeks'));
     }
 
     /**
