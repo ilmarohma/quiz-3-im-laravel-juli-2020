@@ -30,7 +30,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('proyek.create');
     }
 
     /**
@@ -41,7 +41,15 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $query = DB::table('projects') -> insert([
+            'nama' => $request['nama'],
+            'deskripsi' => $request['desk'],
+            'tanggal_mulai' => $request['mulai'],
+            'tanggal_deadline' => $request['deadline'],
+
+        ]);
+
+        return redirect()->route('proyek.index');
     }
 
     /**
