@@ -102,8 +102,12 @@ class ProjectsController extends Controller
      * @param  \App\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Projects $projects)
+    public function destroy($projects)
     {
-        //
+        $query = DB::table('projects') 
+        -> where('id', $projects) 
+        -> delete();
+
+        return redirect()->route('proyek.index');
     }
 }

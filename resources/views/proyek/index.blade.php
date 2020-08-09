@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<a class="btn btn-primary" href="">+ Tambah pertanyaan</a>
+<a class="btn btn-primary" href="/proyek/create">+ Tambah pertanyaan</a>
 <br><br>
 <table class="table table-striped table-bordered">
     <tr>
@@ -21,7 +21,7 @@
         <td>{{ $prt->tanggal_mulai }}</td>
         <td>{{ $prt->tanggal_deadline }}</td>
         <td>
-            <form action="" method="POST">
+            <form action="{{ route('proyek.destroy',$prt->id) }}" method="POST">
    
                 <a class="btn btn-info" href="{{ route('proyek.show',$prt->id) }}">Show</a>
 
