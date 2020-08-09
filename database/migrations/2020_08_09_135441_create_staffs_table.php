@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProjectsTable extends Migration
+class CreateStaffsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('staffs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama', 45);
-            $table->string('deskripsi', 255);
-            $table->dateTime('tanggal_mulai')->nullable();
-            $table->dateTime('tanggal_deadline')->nullable();
-            $table->boolean('status')->nullable()->default(false);
+            $table->unsignedBigInteger('manager_id');
+            $table->foreign('manager_id')->references('id')->on('managers');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('staffs');
     }
 }
